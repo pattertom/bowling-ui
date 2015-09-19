@@ -15,8 +15,8 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        templateUrl: 'views/signup.html',
+        controller: 'SignupController',
         controllerAs: 'main'
       })
       .when('/about', {
