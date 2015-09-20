@@ -2,8 +2,8 @@
 
 angular.module('bowlingUiApp')
 
-.controller('SignupController', ['BowlingApiClient', '$scope', function (BowlingApiClient, $scope) {
-  var client = $scope.client || new BowlingApiClient('http://localhost:8190/api');
+.controller('SignupController', ['BowlingApiClient', '$rootScope', '$scope', 'Session', function (BowlingApiClient, $rootScope, $scope, Session) {
+  var client = Session.getApiClient();
 
   $scope.loginObject = {};
   $scope.signupMessage = undefined;

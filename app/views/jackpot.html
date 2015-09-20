@@ -1,0 +1,90 @@
+<div class="container">
+  <h2>Current Jackpot: {{ currentJackpot | currency }}</h2>
+
+    <hr />
+
+  <form class="form">
+    <h4 class="form-heading">Add a ticket:</h4>
+    <select
+      class="form-control"
+      ng-model="bowler"
+      ng-options="bowler.name for bowler in bowlers"
+    ></select>
+
+    <button
+      class="btn btn-primary"
+      ng-click="purchaseTicket()"
+      type="submit"
+    >
+      Submit Ticket
+    </button>
+  </form>
+
+  <hr />
+
+  <h4 class="form-heading">Draw a winner:</h4>
+
+  <div
+    class="form-message"
+    ng-class="{ red: selectedWinner.success === false }"
+  >
+    <span
+      class="glyphicon glyphicon-exclamation-sign"
+      ng-if="selectedWinner.success === false"
+    />
+    <span>{{ selectedWinner.message }}</span>
+  </div>
+
+  <button
+    class="btn btn-primary"
+    ng-click="drawWinner()"
+    type="submit"
+  >
+    Draw Winner
+  </button>
+
+  <hr />
+
+  <form class="form">
+    <h4 class="form-heading">Add roll result:</h4>
+
+    <input
+      type="number"
+      class="form-control"
+      ng-model="pinsRolled"
+      placeholder="Total Pins Rolled"
+      required
+    >
+
+    <button
+      class="btn btn-primary"
+      ng-click="updateWinner()"
+      type="submit"
+    >
+      Add Roll
+    </button>
+  </form>
+
+  <hr />
+
+  <h2>Jackpot History</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Pins</th>
+        <th>Payout</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if="!payouts || payouts.length === 0"><td>No Bowler Data</td></tr>
+      <tr ng-repeat="payout in payouts | orderBy:'-date'">
+        <td>{{ payout.bowlerId }}</td>
+        <td>{{ payout.pinsKnockedDown || '--' }}</td>
+        <td>{{ payout.payout | currency }}</td>
+        <td>{{ payout.date | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
