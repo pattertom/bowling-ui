@@ -5,6 +5,7 @@ angular.module('bowlingUiApp')
 .controller('SignupController', ['BowlingApiClient', '$rootScope', '$scope', 'Session', function (BowlingApiClient, $rootScope, $scope, Session) {
   var client = Session.getApiClient();
 
+  $rootScope.activeTab = 'signup';
   $scope.loginObject = {};
   $scope.signupMessage = undefined;
 
@@ -41,14 +42,19 @@ angular.module('bowlingUiApp')
     ];
 
     client.createUser(getLoginOrSignupParams())
-    .then(function(asdf) {
-      return client.createLeague({ name: defaultLeagueName }).then(function(league) {
+    .then(function() {
+      return client.createLeague({
+        name: defaultLeagueName
+      }).then(function(league) {
+        $rootScope.leagueId = league.data.id
         return league.data.id;
       });
     })
     .then(function(leagueId) {
       defaultBowlerNames.forEach(function(bowlerName) {
-        client.createBowler({ name: bowlerName }).then(function(bowler) {
+        client.createBowler({
+          name: bowlerName
+        }).then(function(bowler) {
           return bowler.data.id;
         })
         .then(function(bowlerId) {

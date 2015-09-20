@@ -39,9 +39,15 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li ng-class="{ active: activeTab === 'signup' }">
+                <a href="#/">Home</a>
+              </li>
+              <li
+                ng-if="leagueId"
+                ng-class="{ active: activeTab === 'jackpot' }"
+              >
+                <a ng-href="#/jackpot">Jackpot</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -56,7 +62,10 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p>
+          <img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699909-icon-4-bowling-ball-128.png" width="24px" />
+          <span>NC Bowling 2015</span>
+        </p>
       </div>
     </div>
 
@@ -84,6 +93,7 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+
     <script src="scripts/models/bowling-api-client.js"></script>
     <script src="scripts/models/session.js"></script>
 

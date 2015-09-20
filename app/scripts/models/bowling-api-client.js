@@ -66,6 +66,10 @@ angular.module('bowlingUiApp')
     }, options);
   };
 
+  BowlingApiClient.prototype.getLeague = function(options) {
+    return makeRequest({ url: this.endpoint + '/league/' + options.leagueId }, options);
+  };
+
   BowlingApiClient.prototype.createBowler = function(options) {
     return makeRequest({
       method: 'POST',

@@ -6,13 +6,8 @@
   text-align: center;
 }
 
-.form-signin {
+.form.signup-form {
   margin: 0 auto;
-  max-width: 300px;
-
-  input {
-    margin-bottom: 10px;
-  }
 
   button {
     width: 44%;
@@ -29,8 +24,4 @@
   .or {
     line-height: 34px;
   }
-}
-
-.form-message {
-  margin-bottom: 10px;
 }
