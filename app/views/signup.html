@@ -4,10 +4,63 @@
     <img
       src="http://lakewoodlanes.net/wp-content/uploads/2013/08/bowling.jpg"
       width="300px"
-    /><br>
-    Signup to get started.
+    />
+
+    <div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+
+        <div
+          class="form-message"
+          ng-if="signupMessage"
+          ng-class="signupMessage.success ? 'green' : 'red'"
+        >
+          <span class="glyphicon glyphicon-exclamation-sign" />
+          {{ signupMessage.message }}
+        </div>
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input
+          type="text"
+          id="inputEmail"
+          class="form-control"
+          ng-model="loginObject.email"
+          placeholder="Email address"
+          required
+          autofocus
+        >
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          ng-model="loginObject.password"
+          placeholder="Password"
+          required
+        >
+
+        <button
+          class="btn btn-primary"
+          ng-click="login()"
+          type="submit"
+        >
+          Login
+        </button>
+
+        <span class="or">or</span>
+
+        <button
+          class="btn btn-default"
+          ng-click="signup()"
+          type="submit"
+        >
+          Signup
+        </button>
+      </form>
+    </div>
+
   </p>
-  <p><a class="btn btn-small btn-success" ng-href="#/" ng-click="signup()">Signup!<span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
 
 <div class="row marketing">
